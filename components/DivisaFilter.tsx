@@ -78,12 +78,14 @@ export const DivisaFilter: React.FC<DivisaFilterProps> = ({
                         )}
                     </div>
                 </div>
-                <button
-                    onClick={onRegisterDivisa}
-                    className={`${actionButtonBase} bg-blue-900 text-white border-blue-950`}
-                >
-                    <PlusCircle size={20} /> Registrar Divisa
-                </button>
+                {hasDivisas && (
+                    <button
+                        onClick={onRegisterDivisa}
+                        className={`${actionButtonBase} bg-blue-900 text-white border-blue-950`}
+                    >
+                        <PlusCircle size={20} /> Registrar Divisa
+                    </button>
+                )}
             </div>
 
             {hasDivisas && (
