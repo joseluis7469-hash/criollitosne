@@ -1291,6 +1291,7 @@ export default function App() {
               onViewDirectiva={() => handleViewDirectiva(selectedLeague!)}
               onEditDirectiva={() => handleOpenDirectiva(selectedLeague!)}
               onDeleteDirectiva={handleDeleteDirectiva}
+              hasDivisas={currentDivisas.length > 0}
             />
 
             <DivisaList
