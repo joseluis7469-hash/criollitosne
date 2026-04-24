@@ -12,7 +12,7 @@ export const CATEGORIES: Category[] = [
   { name: 'JUVENIL', min: 16, max: 17 },
 ];
 
-export const LEAGUES: string[] = ["LIGA DIAZ", "LIGA MARCANO", "LIGA MARIÑO"];
+export const LEAGUES: string[] = [];
 
 interface NavOption {
   id: string;

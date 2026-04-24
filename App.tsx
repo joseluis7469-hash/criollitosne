@@ -527,10 +527,10 @@ export default function App() {
     // Divisas descubiertas de jugadores y staff
     const discovered = new Set<string>(registered);
     players.forEach(p => {
-      if (p.league === selectedLeague && p.team) discovered.add(p.team);
+      if ((p.league || '').trim().toUpperCase() === (selectedLeague || '').trim().toUpperCase() && p.team) discovered.add(p.team);
     });
     allStaff.forEach(s => {
-      if (s.league === selectedLeague && s.team) discovered.add(s.team);
+      if ((s.league || '').trim().toUpperCase() === (selectedLeague || '').trim().toUpperCase() && s.team) discovered.add(s.team);
     });
 
     return Array.from(discovered).sort();
@@ -539,8 +539,8 @@ export default function App() {
   const filteredPlayers = useMemo(() => {
     return players
       .filter(p =>
-        p.league === selectedLeague &&
-        p.team === selectedDivisa &&
+        (p.league || '').trim().toUpperCase() === (selectedLeague || '').trim().toUpperCase() &&
+        (p.team || '').trim().toUpperCase() === (selectedDivisa || '').trim().toUpperCase() &&
         (p.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
           p.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
           p.dni.includes(searchQuery) ||
@@ -555,11 +555,11 @@ export default function App() {
   }, [players, selectedLeague, selectedDivisa, searchQuery]);
 
   const filteredStaff = useMemo(() => {
-    return allStaff.filter(s => s.league === selectedLeague && s.team === selectedDivisa);
+    return allStaff.filter(s => (s.league || '').trim().toUpperCase() === (selectedLeague || '').trim().toUpperCase() && (s.team || '').trim().toUpperCase() === (selectedDivisa || '').trim().toUpperCase());
   }, [allStaff, selectedLeague, selectedDivisa]);
 
   const currentDivisaRosters = useMemo(() => {
-    return rosters.filter(r => r.team === selectedDivisa && r.league === selectedLeague);
+    return rosters.filter(r => (r.team || '').trim().toUpperCase() === (selectedDivisa || '').trim().toUpperCase() && (r.league || '').trim().toUpperCase() === (selectedLeague || '').trim().toUpperCase());
   }, [rosters, selectedDivisa, selectedLeague]);
 
   const hasDirectivaChanged = useMemo(() => {

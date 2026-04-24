@@ -125,7 +125,7 @@ export const RosterForm: React.FC<RosterFormProps> = ({
                                                         value={pId || ""}
                                                     >
                                                         <option value="">-- SELECCIONE --</option>
-                                                        {players.filter(p => p.team === selectedDivisa && p.league === selectedLeague && p.category === formData.category).map(p => (
+                                                        {players.filter(p => (p.team || '').trim().toUpperCase() === (selectedDivisa || '').trim().toUpperCase() && (p.league || '').trim().toUpperCase() === (selectedLeague || '').trim().toUpperCase() && (p.category || '').trim().toUpperCase() === (formData.category || '').trim().toUpperCase()).map(p => (
                                                             <option key={p.id} value={p.id}>{p.lastName}, {p.firstName}</option>
                                                         ))}
                                                     </select>
